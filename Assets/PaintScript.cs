@@ -52,31 +52,31 @@ public class PaintScript : MonoBehaviour {
 //		m_Texture.SetPixels32 (m_PaintMaskPixels);
 //		m_Texture.Apply ();
 
-		foreach (ContactPoint p in info.contacts) {
-
-			RaycastHit hit = new RaycastHit();
-			Ray ray = new Ray(p.point - p.normal, p.normal);
-			if(p.thisCollider.Raycast(ray, out hit, 1.1f)){
-				Vector2 texCoord = hit.textureCoord;
-				Debug.Log(texCoord);
-				int x = (int)(texCoord.x * m_Texture.width);
-				int y = (int)(texCoord.y * m_Texture.height);
-
-				int width = 51;
-				int height = 51;
-				int x0 = x - width/2;
-				int y0 = y - height/2;
-
-				Color[] colors = new Color[width*height];
-				for(int i = 0; i < width*height; i++) {
-					colors[i] = Color.red;
-				}
-
-				m_Texture.SetPixels(x0, y0, width, height, colors);
-//				m_Texture.SetPixel(x, y, Color.red);
-				m_Texture.Apply();
-			}
-		}
+//		foreach (ContactPoint p in info.contacts) {
+//
+//			RaycastHit hit = new RaycastHit();
+//			Ray ray = new Ray(p.point - p.normal, p.normal);
+//			if(p.thisCollider.Raycast(ray, out hit, 1.1f)){
+//				Vector2 texCoord = hit.textureCoord;
+//				Debug.Log(texCoord);
+//				int x = (int)(texCoord.x * m_Texture.width);
+//				int y = (int)(texCoord.y * m_Texture.height);
+//
+//				int width = 51;
+//				int height = 51;
+//				int x0 = x - width/2;
+//				int y0 = y - height/2;
+//
+//				Color[] colors = new Color[width*height];
+//				for(int i = 0; i < width*height; i++) {
+//					colors[i] = Color.red;
+//				}
+//
+//				m_Texture.SetPixels(x0, y0, width, height, colors);
+////				m_Texture.SetPixel(x, y, Color.red);
+//				m_Texture.Apply();
+//			}
+//		}
 
 
 //		for (int i = 0; i < 100; i++) {
