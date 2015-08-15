@@ -626,10 +626,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 718982754}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b58900d8e6f99ba48a03df3d7bd50f26, type: 3}
+  m_Script: {fileID: 11500000, guid: d9de8e4584776974da49cf49b7470f38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_TextureResolution: 1024
+  m_TextureResolution: 512
+  m_Splat: {fileID: 2800000, guid: e9811a341fbefeb4b8582e5c864d28e2, type: 3}
 --- !u!64 &718982760
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1504,6 +1505,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 11455996, guid: 917e4ba194b280b47b404e99e8328aea, type: 2}
+      propertyPath: m_Gun
+      value: 
+      objectReference: {fileID: 1626981391}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 917e4ba194b280b47b404e99e8328aea, type: 2}
   m_IsPrefabParent: 0
@@ -1780,6 +1785,12 @@ MonoBehaviour:
   m_SpawnPoint: {fileID: 310071223}
   m_ExitPoint: {fileID: 1341508762}
   power: 10
+--- !u!114 &1626981391 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11421586, guid: b265431871fb8f84b874a3642ea09776,
+    type: 2}
+  m_PrefabInternal: {fileID: 1626981387}
+  m_Script: {fileID: 11500000, guid: f33736210c362bf498e9676947c9de84, type: 3}
 --- !u!1001 &1632456680
 Prefab:
   m_ObjectHideFlags: 0
@@ -1854,10 +1865,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1679771378}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b58900d8e6f99ba48a03df3d7bd50f26, type: 3}
+  m_Script: {fileID: 11500000, guid: d9de8e4584776974da49cf49b7470f38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_TextureResolution: 1024
+  m_TextureResolution: 512
+  m_Splat: {fileID: 2800000, guid: e9811a341fbefeb4b8582e5c864d28e2, type: 3}
 --- !u!64 &1679771380
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2028,10 +2040,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1782127530}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b58900d8e6f99ba48a03df3d7bd50f26, type: 3}
+  m_Script: {fileID: 11500000, guid: d9de8e4584776974da49cf49b7470f38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_TextureResolution: 256
+  m_TextureResolution: 512
+  m_Splat: {fileID: 2800000, guid: e9811a341fbefeb4b8582e5c864d28e2, type: 3}
 --- !u!64 &1782127532
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2227,12 +2240,16 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 449806, guid: 917e4ba194b280b47b404e99e8328aea, type: 2}
       propertyPath: m_RootOrder
-      value: 13
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 183680, guid: 917e4ba194b280b47b404e99e8328aea, type: 2}
       propertyPath: m_Name
       value: Player (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 11455996, guid: 917e4ba194b280b47b404e99e8328aea, type: 2}
+      propertyPath: m_Gun
+      value: 
+      objectReference: {fileID: 1626981391}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 917e4ba194b280b47b404e99e8328aea, type: 2}
   m_IsPrefabParent: 0

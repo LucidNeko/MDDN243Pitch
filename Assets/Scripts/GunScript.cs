@@ -17,14 +17,25 @@ public class GunScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(CanShoot() && Input.GetMouseButtonDown(0)) {
+//		if(CanShoot() && Input.GetMouseButtonDown(0)) {
+//			m_Animator.SetTrigger("Shoot");
+//			Vector3 direction = (m_ExitPoint.position - m_SpawnPoint.position).normalized;
+//			GameObject bullet = Instantiate(m_BulletPrefab, m_SpawnPoint.position, Quaternion.LookRotation(direction)) as GameObject;
+//			bullet.GetComponent<Rigidbody>().AddForce(direction*power, ForceMode.Impulse);
+//			bullet.GetComponent<Animator>().SetTrigger("Wobble");
+//		}
+	
+	}
+
+	public void Fire(Color color) {
+		if(CanShoot()) {
 			m_Animator.SetTrigger("Shoot");
 			Vector3 direction = (m_ExitPoint.position - m_SpawnPoint.position).normalized;
 			GameObject bullet = Instantiate(m_BulletPrefab, m_SpawnPoint.position, Quaternion.LookRotation(direction)) as GameObject;
+			bullet.GetComponent<Renderer>().material.color = color;
 			bullet.GetComponent<Rigidbody>().AddForce(direction*power, ForceMode.Impulse);
 			bullet.GetComponent<Animator>().SetTrigger("Wobble");
 		}
-	
 	}
 
 	private bool CanShoot() {

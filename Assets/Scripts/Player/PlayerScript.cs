@@ -5,6 +5,7 @@ public class PlayerScript : MonoBehaviour {
 
 	public float m_Speed = 6f;
 
+	private PlayerController m_PlayerController;
 	private Rigidbody m_RigidBody;
 	private Animator m_Animator;
 
@@ -17,6 +18,8 @@ public class PlayerScript : MonoBehaviour {
 		m_RigidBody.constraints = RigidbodyConstraints.FreezeRotationX | 
 								  RigidbodyConstraints.FreezeRotationY | 
 								  RigidbodyConstraints.FreezeRotationZ;
+
+		m_PlayerController = GetComponent<PlayerController> ();
 	}
 	
 	// Update is called once per frame
@@ -36,5 +39,8 @@ public class PlayerScript : MonoBehaviour {
 
 		m_Animator.SetFloat ("Speed", (new Vector3(h,0,v) * m_Speed).magnitude);
 
+		if (Input.GetMouseButton (0)) {
+			m_PlayerController.Fire();
+		}
 	}
 }
