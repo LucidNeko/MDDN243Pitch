@@ -858,10 +858,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 183680}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f72bdaf88f6e66c459b0d95c5b77a063, type: 3}
+  m_Script: {fileID: 11500000, guid: 0a3095c2a2675c749a5f4c466dfd176c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Speed: 6
 --- !u!114 &11423550
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -873,6 +872,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119c01f1159fb6441984a32e38a00869, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Debug: 0
+  m_StartingColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &11455996
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -884,6 +885,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cb837ff77c71004aa8c80faf0db9355, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Speed: 6
   m_Gun: {fileID: 0}
 --- !u!136 &13651020
 CapsuleCollider:

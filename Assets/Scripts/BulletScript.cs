@@ -5,12 +5,15 @@ public class BulletScript : MonoBehaviour {
 
 	private Rigidbody m_RigidBody;
 
+	private float m_Lifetime = 7f;
+
 	public void Start() {
 		m_RigidBody = GetComponent<Rigidbody> ();
 	}
 
 	public void Awake() {
-		StartCoroutine(Expand (3, 1, 0f));
+//		StartCoroutine(Expand (3, 1, 0f));
+		Destroy (gameObject, m_Lifetime);
 	}	
 
 	public void OnCollisionEnter(Collision collision) {
