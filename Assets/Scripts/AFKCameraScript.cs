@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class FPSCameraScript : MonoBehaviour {
+public class AFKCameraScript : MonoBehaviour {
 
 	public Transform m_Target;
 	public Texture2D m_Crosshair;
@@ -17,23 +17,24 @@ public class FPSCameraScript : MonoBehaviour {
 	}
 
 	void Update() {
-		if (Input.GetMouseButtonDown (0)) {
-			Cursor.lockState = CursorLockMode.Locked;
-			Cursor.visible = false;
-		}
+//		if (Input.GetMouseButtonDown (0)) {
+//			Cursor.lockState = CursorLockMode.Locked;
+//			Cursor.visible = false;
+//		}
 	}
 	
 	// Update is called once per frame
 	void LateUpdate () {
 		transform.position = m_Target.position;
-
-		float dx = Input.GetAxis ("Mouse X") * m_SpeedX;
-		float dy = Input.GetAxis ("Mouse Y") * m_SpeedY;
-		if(m_InvertX) { dx = -dx; }
-		if(m_InvertY) { dy = -dy; }
-
-		transform.Rotate (0, dx, 0, Space.World);
-		transform.Rotate (dy, 0, 0, Space.Self);
+		transform.rotation = m_Target.rotation;
+//
+//		float dx = Input.GetAxis ("Mouse X") * m_SpeedX;
+//		float dy = Input.GetAxis ("Mouse Y") * m_SpeedY;
+//		if(m_InvertX) { dx = -dx; }
+//		if(m_InvertY) { dy = -dy; }
+//
+//		transform.Rotate (0, dx, 0, Space.World);
+//		transform.Rotate (dy, 0, 0, Space.Self);
 	}
 
 	void OnGUI() {

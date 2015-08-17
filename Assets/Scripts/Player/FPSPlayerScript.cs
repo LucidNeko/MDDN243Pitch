@@ -12,7 +12,7 @@ public class FPSPlayerScript : MonoBehaviour {
 	void Start () {
 		m_PlayerController = GetComponent<PlayerController> ();
 
-		m_Camera = Camera.main.transform;
+		m_Camera = GameObject.FindGameObjectWithTag ("Player 1 Camera").transform;
 	}
 	
 	// Update is called once per frame
