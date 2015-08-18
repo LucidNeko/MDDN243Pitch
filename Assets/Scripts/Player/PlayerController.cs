@@ -15,6 +15,8 @@ public class PlayerController : MonoBehaviour
 	private Rigidbody m_RigidBody;
 	private Animator m_Animator;
 
+	private bool m_Falling = false;
+
 	private Color m_Color = Color.white;
 	public Color CharacterColor {
 		get { return m_Color; }
@@ -25,6 +27,12 @@ public class PlayerController : MonoBehaviour
 			}
 			m_PlayerMaterial.color = m_Color;
 		}
+	}
+
+	void Awake() {
+		//need to get these asap so CharacterColor works
+		m_GunMaterials = m_Gun.GetComponentsInChildren<Renderer> ();
+		m_PlayerMaterial = GetComponentInChildren<Renderer> ().material;
 	}
 
 	// Use this for initialization
@@ -68,8 +76,22 @@ public class PlayerController : MonoBehaviour
 			m_RigidBody.MoveRotation(look);
 		}
 
+		if (!m_Falling && jump) {
+			m_RigidBody.AddForce(Vector3.up * 20f, ForceMode.Impulse);
+			m_Falling = true;
+		}
+
+		if (m_Falling) {
+			//fall faster when in air
+			m_RigidBody.AddForce ((Physics.gravity * 3f) - Physics.gravity);
+		}
+
 		//Set animator properties
 		m_Animator.SetFloat ("Speed", move.magnitude * m_Speed);
+	}
+
+	void OnCollisionEnter(Collision info) {
+		m_Falling = false;
 	}
 }
 

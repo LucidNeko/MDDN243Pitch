@@ -6,7 +6,7 @@ public class AFKShootScript : MonoBehaviour
 
 	public float m_Delay = 1.5f;
 
-	public Transform[] m_Targets;
+	private Transform[] m_Targets;
 
 	private Transform m_Target;
 
@@ -22,14 +22,27 @@ public class AFKShootScript : MonoBehaviour
 
 	private Transform m_Box;
 
+	private Transform m_Player;
+
 	// Use this for initialization
 	void Start ()
 	{
+		//Find all the targets in the scene
+		GameObject[] targets = GameObject.FindGameObjectsWithTag ("Targetable");
+		m_Targets = new Transform[targets.Length];
+		for (int i = 0; i < m_Targets.Length; i++) {
+			m_Targets [i] = targets [i].transform;
+		}
+
 		m_Animator = GetComponent<Animator> ();
 		m_PlayerController = GetComponent<PlayerController> ();
 		m_StartPosition = transform.position;
 		m_Target = m_Targets[Random.Range(0, m_Targets.Length)];
 		m_Box = GameObject.Find ("Box").transform;
+
+		m_PlayerController.CharacterColor = new Color (Random.value, Random.value, Random.value);
+
+		m_Player = GameObject.FindGameObjectWithTag ("Player").transform;
 	}
 	
 	// Update is called once per frame
@@ -56,13 +69,15 @@ public class AFKShootScript : MonoBehaviour
 
 
 
-		if (Random.value < 0.05f || Vector3.Magnitude (transform.position - m_Target.position) < 6f) {
-			m_Target = Random.value < 0.4f ? m_Targets[Random.Range(0, m_Targets.Length)] : m_Box;
+		if (Random.value < 0.01f || Vector3.Magnitude (transform.position - m_Target.position) < 6f) {
+			m_Target = Random.value < 0.8f ? m_Targets[Random.Range(0, m_Targets.Length)] : m_Box;
 		}
 
+		if (Vector3.Magnitude (transform.position - m_Player.position) < 20f) {
+			m_Target = m_Player.transform;
+		}
 
-
-		Quaternion look = Quaternion.LookRotation(Vector3.Scale(m_Target.position - transform.position, m_Target != m_Box ? new Vector3(1,0,1) : new Vector3(1,1,1)));
+		Quaternion look = Quaternion.LookRotation(Vector3.Scale(m_Target.position - transform.position, m_Target != m_Box ? new Vector3(1,1,1) : new Vector3(1,1,1)));
 		transform.rotation = Quaternion.Lerp (transform.rotation, look, Time.deltaTime*10f);
 
 //		transform.LookAt (m_Target, Vector3.up);

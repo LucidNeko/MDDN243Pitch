@@ -29,5 +29,13 @@ public class FPSPlayerScript : MonoBehaviour {
 		if (Input.GetMouseButton (0)) {
 			m_PlayerController.Fire();
 		}
+
+		if(Input.GetKeyDown(KeyCode.LeftShift)) {
+			GetComponent<Animator>().speed = 1.5f;
+		}
+
+		if(Input.GetKeyUp(KeyCode.LeftShift)) {
+			GetComponent<Animator>().speed = 1;
+		}
 	}
 }

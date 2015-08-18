@@ -590,7 +590,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 183680}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -41.7999992, y: .133868009, z: -37.2999992}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 439320}
@@ -873,7 +873,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Debug: 0
-  m_StartingColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &11455996
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -886,6 +885,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Speed: 6
+  m_StartingColor: {r: 0, g: 0, b: 0, a: 0}
   m_Gun: {fileID: 0}
 --- !u!136 &13651020
 CapsuleCollider:
@@ -893,7 +893,7 @@ CapsuleCollider:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 183680}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 071eeb832dc7a1b4f9b0944699d9ccbd, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: .400000006

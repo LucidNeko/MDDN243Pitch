@@ -6,6 +6,8 @@ public class PaintableWall : MonoBehaviour, PaintableSurface
 	public int m_TextureResolution = 512;
 	public Texture2D m_Splat;
 
+	public bool m_Transparant;
+
 	private Texture2D m_Texture;
 	
 	private Vector3[] m_RandomVectors = new Vector3[100];
@@ -18,7 +20,13 @@ public class PaintableWall : MonoBehaviour, PaintableSurface
 		//Create white pixel array
 		Color[] white = new Color[m_TextureResolution * m_TextureResolution];
 		for(int i = 0; i < m_TextureResolution * m_TextureResolution; i++) {
-			white[i] = Color.white;
+//			white[i] = Color.white;
+
+			if(m_Transparant) {
+				white[i] = new Color(1f,1f,1f,0f);
+			} else {
+				white[i] = new Color(1f,1f,1f,1f);
+			}
 		}
 		
 		//create and assign new white texture
@@ -31,7 +39,8 @@ public class PaintableWall : MonoBehaviour, PaintableSurface
 		m_SplatPixels = m_Splat.GetPixels ();
 	}
 	
-	public bool Paint(Color color, Collision info) {		
+	public bool Paint(Color color, Collision info) {	
+		color.a = 1f;
 		foreach (ContactPoint p in info.contacts) {
 			RaycastHit hit;
 			Ray ray = new Ray (p.point + p.normal, -p.normal);
