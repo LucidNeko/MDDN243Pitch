@@ -3,6 +3,8 @@ using System.Collections;
 
 public class FPSCameraScript : MonoBehaviour {
 
+	public Texture2D m_Logo;
+
 	public Transform m_Target;
 	public Texture2D m_Crosshair;
 	public bool m_InvertX = false;
@@ -44,5 +46,11 @@ public class FPSCameraScript : MonoBehaviour {
 		cross *= 0.5f; //scale crosshair
 
 		GUI.DrawTexture (new Rect (center.x - (cross.x/2f), (center.y - (cross.y/2f)), cross.x, cross.y), m_Crosshair);
+
+		Rect logoRect = new Rect();
+		logoRect.width = m_Logo.width;
+		logoRect.height = m_Logo.height;
+
+		GUI.DrawTexture (logoRect, m_Logo);
 	}
 }

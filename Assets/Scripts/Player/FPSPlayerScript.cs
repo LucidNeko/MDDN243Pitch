@@ -8,11 +8,16 @@ public class FPSPlayerScript : MonoBehaviour {
 	private PlayerController m_PlayerController;
 	private Transform m_Camera;
 
+	private Animator m_Animator;
+
 	// Use this for initialization
 	void Start () {
 		m_PlayerController = GetComponent<PlayerController> ();
 
 		m_Camera = GameObject.FindGameObjectWithTag ("Player 1 Camera").transform;
+
+		m_Animator = GetComponent<Animator> ();
+		m_Animator.speed = 1.5f;
 	}
 	
 	// Update is called once per frame
@@ -31,11 +36,16 @@ public class FPSPlayerScript : MonoBehaviour {
 		}
 
 		if(Input.GetKeyDown(KeyCode.LeftShift)) {
-			GetComponent<Animator>().speed = 1.5f;
+			GetComponent<Animator>().speed = 2f;
 		}
 
 		if(Input.GetKeyUp(KeyCode.LeftShift)) {
-			GetComponent<Animator>().speed = 1;
+			GetComponent<Animator>().speed = 1.5f;
+		}
+
+		//if fall off bottom of the world reset position
+		if(transform.position.y < -20f) {
+			transform.position = Vector3.up * 30f;
 		}
 	}
 }

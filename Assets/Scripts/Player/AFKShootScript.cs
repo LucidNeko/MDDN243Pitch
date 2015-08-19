@@ -23,6 +23,8 @@ public class AFKShootScript : MonoBehaviour
 	private Transform m_Box;
 
 	private Transform m_Player;
+	
+	private bool m_Painted = false;
 
 	// Use this for initialization
 	void Start ()
@@ -40,11 +42,16 @@ public class AFKShootScript : MonoBehaviour
 		m_Target = m_Targets[Random.Range(0, m_Targets.Length)];
 		m_Box = GameObject.Find ("Box").transform;
 
-		m_PlayerController.CharacterColor = new Color (Random.value, Random.value, Random.value);
-
 		m_Player = GameObject.FindGameObjectWithTag ("Player").transform;
 	}
-	
+
+	void Update() {
+		if (!m_Painted) {
+			m_PlayerController.CharacterColor = new Color (Random.value, Random.value, Random.value);
+			m_Painted = true;
+		}
+	}
+
 	// Update is called once per frame
 	void FixedUpdate ()
 	{
@@ -77,8 +84,11 @@ public class AFKShootScript : MonoBehaviour
 			m_Target = m_Player.transform;
 		}
 
-		Quaternion look = Quaternion.LookRotation(Vector3.Scale(m_Target.position - transform.position, m_Target != m_Box ? new Vector3(1,1,1) : new Vector3(1,1,1)));
-		transform.rotation = Quaternion.Lerp (transform.rotation, look, Time.deltaTime*10f);
+		Vector3 forward = Vector3.Scale (m_Target.position - transform.position, m_Target != m_Box ? new Vector3 (1, 1, 1) : new Vector3 (1, 1, 1));
+		if(forward != Vector3.zero) {
+			Quaternion look = Quaternion.LookRotation(forward);
+			transform.rotation = Quaternion.Lerp (transform.rotation, look, Time.deltaTime*10f);
+		}
 
 //		transform.LookAt (m_Target, Vector3.up);
 

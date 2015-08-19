@@ -54,17 +54,20 @@ public class PlayerController : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-		if (Input.GetKeyDown (KeyCode.F)) {
-			m_Gun.GetComponent<Animator>().speed = 10;
-		}
+		if (gameObject.CompareTag ("Player")) {
+			//will change it for all entities not just player.
+			if (Input.GetKeyDown (KeyCode.F)) {
+				m_Gun.GetComponent<Animator> ().speed = 10;
+			}
 
-		if (Input.GetKeyUp (KeyCode.F)) {
-			m_Gun.GetComponent<Animator>().speed = 1;
+			if (Input.GetKeyUp (KeyCode.F)) {
+				m_Gun.GetComponent<Animator> ().speed = 1;
+			}
 		}
 	}
 
 	public void Fire() {
-		m_Gun.Fire (m_Color);
+		m_Gun.Fire (m_Color, gameObject);
 	}
 
 	public void Move(Vector3 move, bool jump) {
@@ -91,6 +94,13 @@ public class PlayerController : MonoBehaviour
 	}
 
 	void OnCollisionEnter(Collision info) {
+		BulletScript bullet = info.gameObject.GetComponent<BulletScript> ();
+		if(bullet) {
+			if(bullet.m_Ignore = gameObject) {
+				return;
+			}
+		}
+
 		m_Falling = false;
 	}
 }

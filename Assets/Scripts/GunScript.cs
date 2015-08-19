@@ -27,7 +27,7 @@ public class GunScript : MonoBehaviour {
 	
 	}
 
-	public void Fire(Color color) {
+	public void Fire(Color color, GameObject shooter) {
 		if(CanShoot()) {
 			m_Animator.SetTrigger("Shoot");
 			Vector3 direction = (m_ExitPoint.position - m_SpawnPoint.position).normalized;
@@ -35,6 +35,7 @@ public class GunScript : MonoBehaviour {
 			bullet.GetComponent<Renderer>().material.color = color;
 			bullet.GetComponent<Rigidbody>().AddForce(direction*power, ForceMode.Impulse);
 			bullet.GetComponent<Animator>().SetTrigger("Wobble");
+			bullet.GetComponent<BulletScript>().m_Ignore = shooter;
 		}
 	}
 

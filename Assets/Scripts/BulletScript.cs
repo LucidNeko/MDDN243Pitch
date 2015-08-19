@@ -3,6 +3,8 @@ using System.Collections;
 
 public class BulletScript : MonoBehaviour {
 
+	public GameObject m_Ignore;
+
 	private Rigidbody m_RigidBody;
 
 	private float m_Lifetime = 7f;
@@ -17,6 +19,10 @@ public class BulletScript : MonoBehaviour {
 	}	
 
 	public void OnCollisionEnter(Collision collision) {
+		if (collision.gameObject == m_Ignore) {
+			return;
+		}
+
 		PaintableSurface ps = collision.gameObject.GetComponent<PaintableSurface> ();
 		if (ps != null) {
 			if(ps.Paint(GetComponent<Renderer>().material.color, collision)) {
